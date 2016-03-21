@@ -3,6 +3,8 @@
 ////////////////////////////////////////////////
 'use strict';
 
+rockPaperScissors();
+
 function getInput() {
     console.log("Please choose either 'rock', 'paper', or 'scissors'.");
     return prompt();
@@ -20,31 +22,47 @@ function randomPlay() {
 ////////////////////////////////////////////////
 /*           Write Your Code Below            */
 ////////////////////////////////////////////////
+var playerMove;
+var computerMove;
+var winner;
+
+function rockPaperScissors() {
+    console.log("Let's play Rock, Paper, Scissors.");
+    getPlayerMove();  
+    getComputerMove();
+    getWinner();
+}
+
 
 function getPlayerMove(move) {
+    move = getInput();
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `getInput()`.
      /* Your Expression */
-
-    if (move !== undefined || null){
-        move;
-    } else if (move === undefined || null){
-        return getInput();
+    if (move !== null || undefined){
+    playerMove = move;
+    console.log("The player chose " + move);
     }
+    else
+    return getInput();
 }
+
 
 function getComputerMove(move) {
+    move = randomPlay();
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
-    // However, if `move` is not specified / is null, your expression should equal `randomPlay()`.
-
-    if (move !== undefined || null){
-        move;
-    } else if (move === undefined || null){
-        return randomPlay();
+    // However, if `move` is not specified / is null, your expression should equal `getInput()`.
+     /* Your Expression */
+    if (move !== null || undefined){
+    computerMove = move;
+    console.log("The computer chose " + move);
     }
+    else
+    return randomPlay();
 }
+
 
 function getWinner(playerMove, computerMove) {
     var winner;
@@ -53,34 +71,39 @@ function getWinner(playerMove, computerMove) {
     // The rules of the game are that 'rock' beats 'scissors', 'scissors' beats 'paper', and 'paper' beats 'rock'.
     /* YOUR CODE HERE */
     if (playerMove == "rock" && computerMove == "scissors"){
-    	winner = "player";
+        winner = "player";
+        return console.log(winner + "wins!");
     }
 
     else if (playerMove == "scissors" && computerMove == "paper"){
-    	winner = "player";
+        winner = "player";
+        return console.log(winner + "wins!");
     }
 
     else if (playerMove == "paper" && computerMove == "rock"){
-    	winner = "player";
+        winner = "player";
+        return console.log(winner + "wins!");
     }
 
     else if ( computerMove == "rock" && playerMove == "scissors"){
-    	winner = "computer";
+        winner = "computer";
+        return console.log(winner + "wins!");
     }
 
     else if ( computerMove == "scissors" && playerMove == "paper"){
-    	winner = "computer";
+        winner = "computer";
+        return console.log(winner + "wins!");
     }
 
     else if ( computerMove == "paper" && playerMove == "rock"){
-    	winner = "computer";
+        winner = "computer";
+        return console.log(winner + "wins!");
     }
 
     else {
-    	winner = "tie";
+        winner = "tie";
+        return console.log("it's a " + winner);
     }
-
-    return winner;
 }
 
 function playToFive() {
